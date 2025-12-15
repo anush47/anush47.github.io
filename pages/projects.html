@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects | Anushanga</title>
-    <link rel="stylesheet" href="../css/style.css?v=5">
+    <link rel="stylesheet" href="../css/style.css?v=17">
 </head>
 
 <body>
@@ -29,135 +29,113 @@
             <p class="subtitle">A showcase of my technical work, research, and games.</p>
         </header>
 
-        <section class="grid">
+        <div class="profile-section" style="grid-template-columns: 1fr;">
 
-            <!-- Detailed Featured Project -->
-            <div class="info-card delay-1" style="grid-column: 1 / -1;">
-                <h2>Automated Patch Backporting (Research)</h2>
-                <div style="margin-bottom: 2rem;">
+            <!-- Automated Patch Backporting -->
+            <div class="exp-item delay-1">
+                <span class="exp-date">Research</span>
+                <h2>Automated Patch Backporting</h2>
+                <div style="margin: 0.5rem 0 1rem 0;">
                     <span class="tech-tag">LangGraph</span>
                     <span class="tech-tag">Spring Boot</span>
                     <span class="tech-tag">Python (MCP)</span>
                     <span class="tech-tag">TypeScript</span>
                 </div>
-
-                <p style="color: var(--text-muted); margin-bottom: 2rem; max-width: 800px; line-height: 1.8;">
+                <p style="color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.6;">
                     A multi-agent, Large Language Model (LLM) system designed to automate the backporting of security
-                    patches in enterprise software.
-                    This research addresses the challenges of <strong>Semantic and Structural Divergence</strong> by
-                    using an orchestrated agentic workflow
-                    to reason about code changes, dependencies, and regressions.
+                    patches in enterprise software. Addresses <strong>Semantic and Structural Divergence</strong> using
+                    orchestrated agents for reasoning, code generation, and validation.
                 </p>
-
-                <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
-                    <div>
-                        <h3 style="font-size: 1.2rem; margin-bottom: 1rem;">Core Architecture</h3>
-                        <ul style="padding-left: 1.2rem; color: var(--text-muted); list-style-type: disc;">
-                            <li style="margin-bottom: 0.5rem;"><strong>Note-Taking & Reasoning Agent:</strong> Analyzes
-                                patch semantics and maintains context.</li>
-                            <li style="margin-bottom: 0.5rem;"><strong>Code Generation Agent:</strong> Synthesizes
-                                backported code variants.</li>
-                            <li style="margin-bottom: 0.5rem;"><strong>Validation Agent:</strong> Enforces compilation
-                                and test integrity.</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3 style="font-size: 1.2rem; margin-bottom: 1rem;">Impact & Methodology</h3>
-                        <ul style="padding-left: 1.2rem; color: var(--text-muted); list-style-type: disc;">
-                            <li style="margin-bottom: 0.5rem;"><strong>Hybrid Detection:</strong> Combines Git history
-                                tracing with TF-IDF/Embeddings for location accuracy.</li>
-                            <li style="margin-bottom: 0.5rem;"><strong>Validation:</strong> Tested on a curated dataset
-                                of 474 verified backports from OpenJDK and Kafka.</li>
-                        </ul>
-                    </div>
-                </div>
+                <ul style="padding-left: 1.2rem; color: var(--text-muted); list-style-type: disc;">
+                    <li style="margin-bottom: 0.5rem;"><strong>Core Architecture:</strong> Note-Taking, Code Generation,
+                        and Validation agents.</li>
+                    <li><strong>Impact:</strong> Validated on a dataset of 474 verified backports from OpenJDK and
+                        Kafka.</li>
+                </ul>
             </div>
 
-            <div class="info-card delay-2">
-                <h2>Salary App (SaaS)</h2>
-                <div style="margin-bottom: 1rem;">
+            <!-- Salary App -->
+            <div class="exp-item delay-2">
+                <span class="exp-date">SaaS • Jul 2024 – Present</span>
+                <h2>Salary App</h2>
+                <div style="margin: 0.5rem 0 1rem 0;">
                     <span class="tech-tag">Next.js</span>
                     <span class="tech-tag">Node.js</span>
                     <span class="tech-tag">MongoDB</span>
                 </div>
-                <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
-                    A comprehensive SaaS solution for payroll and employee management, actively serving <strong>25+
-                        registered businesses</strong>.
-                    Built for reliability and scale.
+                <p style="color: var(--text-muted); margin-bottom: 1rem;">
+                    A comprehensive SaaS solution for payroll and employee management, serving <strong>25+ registered
+                        businesses</strong>.
                 </p>
-                <div style="border-top: 1px solid var(--border-color); padding-top: 1rem;">
-                    <p style="font-weight: 500; margin-bottom: 0.5rem;">Key Features:</p>
-                    <ul
-                        style="padding-left: 1.2rem; color: var(--text-muted); font-size: 0.9rem; list-style-type: disc;">
-                        <li><strong>PWA Support:</strong> Offline capabilities and mobile-first design.</li>
-                        <li><strong>Secure Auth:</strong> Role-based access control (RBAC).</li>
-                        <li><strong>Optimized Performance:</strong> Advanced client-side caching strategies.</li>
-                    </ul>
-                </div>
-                <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 1rem;">2024 Jul – Present</p>
+                <ul style="padding-left: 1.2rem; color: var(--text-muted); list-style-type: disc;">
+                    <li><strong>Features:</strong> PWA support, Role-based access control (RBAC), offline capabilities.
+                    </li>
+                </ul>
             </div>
 
-            <div class="info-card delay-3">
+            <!-- NextBus -->
+            <div class="exp-item delay-3">
+                <span class="exp-date">Research Project</span>
                 <h2>NextBus: Spatio-Temporal Prediction</h2>
-                <div style="margin-bottom: 1rem;">
+                <div style="margin: 0.5rem 0 1rem 0;">
                     <span class="tech-tag">FastAPI</span>
                     <span class="tech-tag">GNN</span>
                     <span class="tech-tag">Deep Learning</span>
                 </div>
-                <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
-                    Advanced Graph Neural Network (GNN) models to predict bus arrivals by capturing complex spatial and
-                    temporal route dependencies.
+                <p style="color: var(--text-muted); margin-bottom: 1rem;">
+                    Advanced Graph Neural Network (GNN) models to predict bus arrivals using real-world NYC MTA data.
                 </p>
-                <div style="border-top: 1px solid var(--border-color); padding-top: 1rem;">
-                    <ul
-                        style="padding-left: 1.2rem; color: var(--text-muted); font-size: 0.9rem; list-style-type: disc;">
-                        <li><strong>Data Source:</strong> Real-world NYC MTA transit data.</li>
-                        <li><strong>Tech Stack:</strong> Fast, async backend (FastAPI) coupled with a reactive Vite
-                            dashboard.</li>
-                    </ul>
-                </div>
             </div>
 
-            <div class="info-card">
+            <!-- Flower Trading System -->
+            <div class="exp-item">
+                <span class="exp-date">Simulation</span>
                 <h2>Flower Trading System</h2>
-                <div style="margin-bottom: 1rem;">
+                <div style="margin: 0.5rem 0 1rem 0;">
                     <span class="tech-tag">C++</span>
                     <span class="tech-tag">Low Latency</span>
                 </div>
-                <p style="color: var(--text-muted); margin-bottom: 1rem;">
-                    High-frequency trading engine simulator featuring <strong>concurrent price-time priority</strong>
-                    order matching logic, designed for maximum throughput and minimal latency.
+                <p style="color: var(--text-muted);">
+                    High-frequency trading engine simulator featuring concurrent price-time priority order matching
+                    logic.
                 </p>
             </div>
 
-        </section>
+            <!-- Academic Stuff -->
+            <div class="exp-item">
+                <span class="exp-date">Symposium 2025</span>
+                <h2>Enhancing Bus Arrival Prediction</h2>
+                <p class="subtitle" style="margin-bottom: 0.5rem;">ADScAI Summit</p>
+                <p style="color: var(--text-muted);">
+                    Developed a hybrid GNN and Transformer-based model for bus arrival time prediction.
+                </p>
+            </div>
 
-        <h2 style="margin-top: 4rem;">Academic Contributions</h2>
-        <div class="info-card">
-            <h3>Enhancing Bus Arrival Prediction</h3>
-            <p class="subtitle" style="font-size: 1rem;">ADScAI Summit & Symposium 2025</p>
-            <p style="margin-top: 1rem; color: var(--text-muted);"> Developed a hybrid GNN and Transformer-based model
-                for bus arrival time prediction, utilizing real-world NYC MTA data.</p>
-        </div>
+            <!-- Game Dev (Grouped) -->
+            <div class="exp-item">
+                <span class="exp-date">Game Development</span>
+                <h2>Indie Games</h2>
+                <div
+                    style="margin-top: 1rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem;">
+                    <div>
+                        <h3 style="font-size: 1rem;">Blocky</h3>
+                        <p style="font-size: 0.85rem; color: var(--text-muted);">Endless Android game</p>
+                    </div>
+                    <div>
+                        <h3 style="font-size: 1rem;">XOX 3D</h3>
+                        <p style="font-size: 0.85rem; color: var(--text-muted);">AI-driven multiplayer</p>
+                    </div>
+                    <div>
+                        <h3 style="font-size: 1rem;">Sudoku</h3>
+                        <p style="font-size: 0.85rem; color: var(--text-muted);">Procedural puzzles</p>
+                    </div>
+                    <div>
+                        <h3 style="font-size: 1rem;">Drive Extreme</h3>
+                        <p style="font-size: 0.85rem; color: var(--text-muted);">3D simulation</p>
+                    </div>
+                </div>
+            </div>
 
-        <h2 style="margin-top: 4rem;">Game Development</h2>
-        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
-            <div class="info-card">
-                <h3>Blocky</h3>
-                <p class="subtitle" style="font-size: 0.9rem;">Endless Android game</p>
-            </div>
-            <div class="info-card">
-                <h3>XOX 3D</h3>
-                <p class="subtitle" style="font-size: 0.9rem;">AI-driven multiplayer</p>
-            </div>
-            <div class="info-card">
-                <h3>Sudoku</h3>
-                <p class="subtitle" style="font-size: 0.9rem;">Procedural puzzles</p>
-            </div>
-            <div class="info-card">
-                <h3>Drive Extreme</h3>
-                <p class="subtitle" style="font-size: 0.9rem;">3D simulation</p>
-            </div>
         </div>
     </div>
 

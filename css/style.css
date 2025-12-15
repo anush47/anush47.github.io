@@ -397,18 +397,42 @@ h2 {
     .nav-header {
         flex-direction: column;
         padding: 1rem;
-        gap: 1rem;
+        gap: 0.8rem;
     }
 
     .nav-links {
-        gap: 1rem;
-        flex-wrap: wrap;
-        justify-content: center;
+        display: flex;
+        gap: 1.2rem;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        justify-content: flex-start;
         width: 100%;
+        padding-bottom: 4px;
+        /* Space for hidden scrollbar */
+        scrollbar-width: none;
+        /* Firefox */
+        -webkit-overflow-scrolling: touch;
+        mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .nav-links::-webkit-scrollbar {
+        display: none;
+        /* Chrome/Safari */
     }
 
     .nav-links a {
-        font-size: 0.85rem;
+        font-size: 0.9rem;
+        flex-shrink: 0;
+        /* Prevent text wrapping/shrinking */
+        white-space: nowrap;
+    }
+
+    /* Ensure content clears the taller stacked header */
+    .page-offset {
+        padding-top: 10rem;
     }
 }
 
