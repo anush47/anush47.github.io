@@ -249,23 +249,56 @@ h2 {
     justify-content: space-between;
     align-items: baseline;
     padding: 2rem;
-    border-radius: var(--radius-md);
+
+    /* Timeline Style */
+    margin-left: 1rem;
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+
+    /* Glass Effect */
+    background: linear-gradient(90deg, var(--glass-bg), rgba(var(--bg-card-rgb), 0.3));
     border: 1px solid var(--glass-border);
+    border-left: 2px solid var(--border-color);
+
     transition: var(--transition-smooth);
     position: relative;
     cursor: pointer;
-    background: rgba(var(--bg-card-rgb), 0.3);
     backdrop-filter: blur(0px);
-    /* Clean base */
+    /* Clean base until hover? Or consistent? Let's match exp-item */
+    backdrop-filter: var(--glass-blur);
 }
 
 .menu-item:hover {
     padding-left: 2.5rem;
     background: var(--glass-bg);
     border-color: rgba(var(--text-main-rgb), 0.2);
+    border-left-color: var(--text-main);
     backdrop-filter: var(--glass-blur);
     box-shadow: var(--glass-shadow);
-    transform: translateY(-2px);
+    transform: translateX(5px);
+    /* Slide right instead of lift */
+}
+
+/* Timeline Dot */
+.menu-item::before {
+    display: block;
+    content: '';
+    position: absolute;
+    left: -9px;
+    top: 50%;
+    /* Center dot vertically for menu items? Or top? Let's try centered for menu */
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    background: var(--bg-main);
+    border: 2px solid var(--text-muted);
+    border-radius: 50%;
+    transition: var(--transition-fast);
+    z-index: 2;
+}
+
+.menu-item:hover::before {
+    background: var(--text-main);
+    border-color: var(--text-main);
 }
 
 .menu-item a {
