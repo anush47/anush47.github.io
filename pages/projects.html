@@ -19,6 +19,9 @@
             <a href="skills.html">Skills</a>
             <a href="about.html">About</a>
             <a href="contact.html">Contact</a>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+                <span id="theme-icon">🌙</span>
+            </button>
         </div>
     </nav>
 
@@ -131,9 +134,12 @@
             <!-- Salary App -->
             <div class="exp-item delay-2">
                 <span class="exp-date">SaaS • Jul 2024 – Present</span>
-                <h2><a href="https://salary-mocha.vercel.app/" target="_blank"
-                        style="color: inherit; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.3);">Salary
-                        App</a> <span style="font-size: 0.6em; vertical-align: middle;">↗</span></h2>
+                <div class="project-header-row">
+                    <h2>Salary App</h2>
+                    <a href="https://salary-mocha.vercel.app/" target="_blank" class="visit-btn">
+                        Visit ↗
+                    </a>
+                </div>
                 <div style="margin: 0.5rem 0 1rem 0;">
                     <span class="tech-tag">Next.js</span>
                     <span class="tech-tag">Node.js</span>
@@ -306,6 +312,46 @@
         </div>
     </div>
 
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+
+        // Check local storage or system preference
+        const currentTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        if (currentTheme === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+            themeIcon.textContent = '☀️';
+        } else if (currentTheme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            themeIcon.textContent = '🌙';
+        } else {
+            // Default to system preference
+            if (!systemPrefersDark) {
+                document.documentElement.setAttribute('data-theme', 'light');
+                themeIcon.textContent = '☀️';
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                themeIcon.textContent = '🌙';
+            }
+        }
+
+        // Toggle Event
+        themeToggleBtn.addEventListener('click', () => {
+            let theme = document.documentElement.getAttribute('data-theme');
+
+            if (theme === 'light') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                themeIcon.textContent = '🌙';
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light');
+                themeIcon.textContent = '☀️';
+            }
+        });
+    </script>
 </body>
 
 </html>

@@ -1,24 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap');
 
 :root {
-    /* Color Palette - Premium B&W */
-    --bg-main: #0a0a0a;
-    /* Deepest Black */
-    --bg-card: #141414;
-    /* Slightly lighter for cards */
-    --bg-hover: #1f1f1f;
-    /* Hover state */
+    /* Color Palette - Dark Mode (Default) */
+    --bg-main-rgb: 10, 10, 10;
+    /* #0a0a0a */
+    --bg-card-rgb: 20, 20, 20;
+    /* #141414 */
+    --bg-hover-rgb: 31, 31, 31;
+    /* #1f1f1f */
 
-    --text-main: #ffffff;
-    /* Pure White */
-    --text-muted: #a0a0a0;
-    /* Muted Gray */
-    --text-dark: #000000;
-    /* Pure Black (for white backgrounds) */
+    --text-main-rgb: 255, 255, 255;
+    /* #ffffff */
+    --text-muted-rgb: 160, 160, 160;
+    /* #a0a0a0 */
+    --text-inverse-rgb: 0, 0, 0;
+    /* #000000 */
 
-    --accent-glow: rgba(255, 255, 255, 0.1);
-    --border-color: #333333;
-    --border-hover: #ffffff;
+    --border-rgb: 51, 51, 51;
+    /* #333333 */
+    --border-hover-rgb: 255, 255, 255;
 
     /* Typography */
     --font-main: 'Outfit', sans-serif;
@@ -33,6 +33,65 @@
     /* Transitions */
     --transition-fast: 0.2s ease;
     --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+
+    /* Glass Effect Base */
+    --glass-bg: rgba(var(--bg-card-rgb), 0.4);
+    /* More transparent for blur visibility */
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-blur: blur(12px);
+    --glass-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+
+    /* Dynamic Background Gradient (Dark) */
+    --bg-gradient:
+        radial-gradient(circle at 15% 50%, rgba(120, 40, 200, 0.15), transparent 35%),
+        radial-gradient(circle at 85% 30%, rgba(50, 100, 250, 0.15), transparent 35%);
+    /* Dark Mode Gradient */
+
+    --hero-fade-start: 30%;
+    /* Default Fade Start */
+}
+
+/* Light Mode Override */
+[data-theme="light"] {
+    --bg-main-rgb: 245, 245, 247;
+    /* #f5f5f7 - Apple-like warm gray */
+    --bg-card-rgb: 255, 255, 255;
+    /* #ffffff */
+    --bg-hover-rgb: 255, 255, 255;
+    /* #ffffff */
+
+    --text-main-rgb: 20, 20, 20;
+    /* #141414 */
+    --text-muted-rgb: 100, 100, 100;
+    /* #646464 */
+    --text-inverse-rgb: 255, 255, 255;
+
+    --border-rgb: 210, 210, 210;
+    /* #d2d2d2 */
+    --border-hover-rgb: 20, 20, 20;
+
+    /* Glass Effect Light */
+    --glass-bg: rgba(255, 255, 255, 0.45);
+    /* More transparent for light mode to show gradient */
+    --glass-border: rgba(0, 0, 0, 0.06);
+    --glass-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+
+    /* Dynamic Background Gradient (Light) */
+    --bg-gradient:
+        radial-gradient(circle at 15% 50%, rgba(180, 120, 255, 0.3), transparent 40%),
+        radial-gradient(circle at 85% 30%, rgba(100, 180, 255, 0.3), transparent 40%);
+
+    --hero-fade-start: 85%;
+    /* Substantially less fade in Light Mode */
+}
+
+/* Derived Variables for Usage */
+body {
+    --bg-main: rgb(var(--bg-main-rgb));
+    --text-main: rgb(var(--text-main-rgb));
+    --text-muted: rgb(var(--text-muted-rgb));
+    --border-color: rgb(var(--border-rgb));
+    --bg-hover: rgb(var(--bg-hover-rgb));
 }
 
 /* Reset & Base */
@@ -51,6 +110,22 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    position: relative;
+}
+
+/* Rich Background Layer */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-gradient);
+    z-index: -1;
+    pointer-events: none;
+    transition: background 0.5s ease;
 }
 
 a {
@@ -111,6 +186,7 @@ h2,
 h3 {
     font-weight: 600;
     letter-spacing: -0.03em;
+    color: var(--text-main);
 }
 
 h1 {
@@ -124,6 +200,7 @@ h2 {
     margin-bottom: 1.5rem;
     border-bottom: 1px solid var(--border-color);
     padding-bottom: 0.5rem;
+    border-color: var(--border-color);
 }
 
 .subtitle {
@@ -132,29 +209,63 @@ h2 {
     font-weight: 300;
 }
 
-/* Editorial Home Navigation */
+/* Theme Toggle Button */
+.theme-toggle {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    color: var(--text-main);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: var(--transition-fast);
+    backdrop-filter: var(--glass-blur);
+    margin-left: 1rem;
+}
+
+.theme-toggle:hover {
+    background: rgba(var(--text-main-rgb), 0.1);
+    transform: scale(1.1);
+}
+
+
+
+
+/* Editorial Home Navigation - Glassy */
 .menu-list {
     display: flex;
     flex-direction: column;
-    gap: 0;
+    gap: 1rem;
     margin-top: 4rem;
-    border-top: 1px solid var(--border-color);
+    border-top: none;
 }
 
 .menu-item {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    padding: 2.5rem 0;
-    border-bottom: 1px solid var(--border-color);
+    padding: 2rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--glass-border);
     transition: var(--transition-smooth);
     position: relative;
     cursor: pointer;
+    background: rgba(var(--bg-card-rgb), 0.3);
+    backdrop-filter: blur(0px);
+    /* Clean base */
 }
 
 .menu-item:hover {
-    padding-left: 2rem;
-    background: var(--bg-hover);
+    padding-left: 2.5rem;
+    background: var(--glass-bg);
+    border-color: rgba(var(--text-main-rgb), 0.2);
+    backdrop-filter: var(--glass-blur);
+    box-shadow: var(--glass-shadow);
+    transform: translateY(-2px);
 }
 
 .menu-item a {
@@ -175,7 +286,6 @@ h2 {
 .menu-title {
     font-size: clamp(2rem, 4vw, 3.5rem);
     font-weight: 400;
-    /* Thinner weight for elegance */
     color: var(--text-main);
     transition: var(--transition-fast);
 }
@@ -187,7 +297,6 @@ h2 {
     text-align: right;
     max-width: 300px;
     display: none;
-    /* Hidden on small screens, shown on large */
 }
 
 @media (min-width: 768px) {
@@ -230,11 +339,9 @@ h2 {
     aspect-ratio: 3/4;
     max-width: 260px;
     margin: 0 auto;
-    /* Very subtle white glow */
-    box-shadow: 0 0 40px rgba(255, 255, 255, 0.05);
-    /* Subtle rectangular fade at the bottom */
-    mask-image: linear-gradient(to bottom, black 30%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to bottom, black 30%, transparent 100%);
+    box-shadow: 0 0 40px rgba(var(--text-main-rgb), 0.05);
+    mask-image: linear-gradient(to bottom, black var(--hero-fade-start), transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black var(--hero-fade-start), transparent 100%);
 }
 
 @media (min-width: 900px) {
@@ -250,7 +357,6 @@ h2 {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* Natural but polished */
     filter: contrast(1.05) grayscale(10%);
     transition: var(--transition-smooth);
 }
@@ -304,8 +410,11 @@ h2 {
 }
 
 .info-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    box-shadow: var(--glass-shadow);
     border-radius: var(--radius-sm);
     padding: 1.5rem;
     margin-bottom: 1rem;
@@ -313,7 +422,7 @@ h2 {
 
 .tech-tag {
     display: inline-block;
-    background: var(--bg-hover);
+    background: rgba(var(--bg-hover-rgb), 0.5);
     border: 1px solid var(--border-color);
     color: var(--text-main);
     padding: 0.4rem 1rem;
@@ -326,24 +435,44 @@ h2 {
 
 .tech-tag:hover {
     background: var(--text-main);
-    color: var(--text-dark);
+    color: rgb(var(--text-inverse-rgb));
+    border-color: var(--text-main);
 }
 
+/* Glassy Project/Exp Item - Restored Timeline Look */
 .exp-item,
 .project-item {
     padding: 2rem;
-    border-left: 2px solid var(--border-color);
     margin-bottom: 2rem;
     margin-left: 1rem;
+    /* Re-indent for timeline */
     position: relative;
-    background: linear-gradient(90deg, var(--bg-card), transparent);
     border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    /* Timeline shape */
+
+    /* Glass Effect */
+    background: linear-gradient(90deg, var(--glass-bg), rgba(var(--bg-card-rgb), 0.3));
+    border: 1px solid var(--glass-border);
+    border-left: 2px solid var(--border-color);
+    /* Timeline backbone */
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    box-shadow: var(--glass-shadow);
+    transition: var(--transition-smooth);
+}
+
+.exp-item:hover {
+    transform: translateX(5px);
+    border-left-color: var(--text-main);
+    background: var(--glass-bg);
 }
 
 .exp-item::before {
+    display: block;
     content: '';
     position: absolute;
     left: -9px;
+    /* Align dot on the line */
     top: 2rem;
     width: 16px;
     height: 16px;
@@ -351,6 +480,7 @@ h2 {
     border: 2px solid var(--text-muted);
     border-radius: 50%;
     transition: var(--transition-fast);
+    z-index: 2;
 }
 
 .exp-item:hover::before {
@@ -364,6 +494,8 @@ h2 {
     font-size: 0.85rem;
     margin-bottom: 0.5rem;
     display: block;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
 /* Mobile Responsive */
@@ -377,7 +509,7 @@ h2 {
     }
 }
 
-/* Common Navigation Header */
+/* Common Navigation Header - Glassy */
 .nav-header {
     position: fixed;
     top: 0;
@@ -387,10 +519,12 @@ h2 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(10, 10, 10, 0.8);
-    backdrop-filter: blur(10px);
+
+    background: rgba(var(--bg-main-rgb), 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     z-index: 1000;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid var(--glass-border);
 }
 
 @media (max-width: 768px) {
@@ -408,10 +542,9 @@ h2 {
         justify-content: flex-start;
         width: 100%;
         padding-bottom: 4px;
-        /* Space for hidden scrollbar */
         scrollbar-width: none;
-        /* Firefox */
         -webkit-overflow-scrolling: touch;
+
         mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
         -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
         padding-left: 1rem;
@@ -420,17 +553,14 @@ h2 {
 
     .nav-links::-webkit-scrollbar {
         display: none;
-        /* Chrome/Safari */
     }
 
     .nav-links a {
         font-size: 0.9rem;
         flex-shrink: 0;
-        /* Prevent text wrapping/shrinking */
         white-space: nowrap;
     }
 
-    /* Ensure content clears the taller stacked header */
     .page-offset {
         padding-top: 10rem;
     }
@@ -440,11 +570,14 @@ h2 {
     font-weight: 700;
     font-size: 1.2rem;
     letter-spacing: -0.02em;
+    color: var(--text-main);
 }
 
 .nav-links {
     display: flex;
     gap: 2rem;
+    align-items: center;
+    /* Center align with button */
 }
 
 .nav-links a {
@@ -458,7 +591,52 @@ h2 {
     color: var(--text-main);
 }
 
-/* Page padding for fixed header */
 .page-offset {
     padding-top: 8rem;
+}
+
+/* Project Header Row - Align Title & Button with Full Border */
+.project-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    /* Responsive wrapping */
+    gap: 1rem;
+}
+
+.project-header-row h2 {
+    border-bottom: 1px solid var(--border-color);
+    /* Restore H2 border */
+    margin-bottom: 0;
+    padding-bottom: 0.5rem;
+    width: auto;
+    flex-grow: 0;
+    /* Only take necessary width */
+    margin-right: auto;
+    /* Push button to right */
+}
+
+/* Visit Button Style */
+.visit-btn {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 400;
+    font-size: 0.85rem;
+    padding: 0.4rem 1rem;
+    border-radius: 100px;
+    transition: var(--transition-fast);
+    white-space: nowrap;
+    /* Prevent text wrap inside button */
+}
+
+.visit-btn:hover {
+    background: var(--text-main);
+    color: rgb(var(--text-inverse-rgb));
+    border-color: var(--text-main);
 }
