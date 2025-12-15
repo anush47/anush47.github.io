@@ -233,8 +233,8 @@ h2 {
     /* Very subtle white glow */
     box-shadow: 0 0 40px rgba(255, 255, 255, 0.05);
     /* Subtle rectangular fade at the bottom */
-    mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 30%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 30%, transparent 100%);
 }
 
 @media (min-width: 900px) {
