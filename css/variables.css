@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap');
+
+:root {
+    /* Color Palette - Premium B&W */
+    --bg-main: #0a0a0a;
+    /* Deepest Black */
+    --bg-card: #141414;
+    /* Slightly lighter for cards */
+    --bg-hover: #1f1f1f;
+    /* Hover state */
+
+    --text-main: #ffffff;
+    /* Pure White */
+    --text-muted: #a0a0a0;
+    /* Muted Gray */
+    --text-dark: #000000;
+    /* Pure Black (for white backgrounds) */
+
+    --accent-glow: rgba(255, 255, 255, 0.1);
+    --border-color: #333333;
+    --border-hover: #ffffff;
+
+    /* Typography */
+    --font-main: 'Outfit', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    /* Spacing & Layout */
+    --container-width: 1000px;
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
