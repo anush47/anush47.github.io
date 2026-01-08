@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research | Anushanga</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <!-- Common Header -->
+    <nav class="nav-header">
+        <div class="nav-brand"><a href="../index.html">ANUSHANGA G.</a></div>
+        <div class="nav-links">
+            <a href="experience.html">Experience</a>
+            <a href="projects.html">Projects</a>
+            <a href="research.html" class="active">Research</a>
+            <a href="skills.html">Skills</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+                <span id="theme-icon">🌙</span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="container fade-in page-offset">
+
+        <header class="page-header">
+            <h1>Research & Publications</h1>
+            <p class="subtitle">A collection of my academic contributions and published papers.</p>
+        </header>
+
+        <div class="profile-section" style="grid-template-columns: 1fr;">
+
+            <!-- Publication 2 -->
+            <div class="exp-item delay-1">
+                <span class="exp-date">MSR 2026</span>
+                <h2>JavaBackports: A Dataset for Benchmarking Automated Backporting in Java</h2>
+                <p style="color: var(--text-muted); margin-bottom: 0.5rem; font-style: italic;">
+                    MSR 2026 (Mining Software Repositories) -- Data and Tool Showcase Track
+                </p>
+                <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">
+                    <small>Kaushal Kahapola, Sharada Galappaththi, Dinith Ranasinghe, Ridwan Shariffdeen, Nisansa de
+                        Silva, Srinath Perera, Sandareka Wickramanayake</small>
+                </p>
+
+                <ul
+                    style="padding-left: 1.2rem; color: var(--text-muted); list-style-type: disc; font-size: 0.95rem; margin-bottom: 1.5rem;">
+                    <li style="margin-bottom: 0.5rem;">Curated and released <i>JavaBackports</i>, a manually validated
+                        dataset of 474 real-world Java backport instances collected from 8 large-scale open-source
+                        projects.</li>
+                    <li>Annotated backports with complexity and intent labels to support systematic benchmarking of
+                        LLM-based automated patch backporting approaches.</li>
+                </ul>
+            </div>
+
+            <!-- Publication 1 -->
+            <div class="exp-item delay-2">
+                <span class="exp-date">ADScAI Summit & Symposium 2025</span>
+                <h2>Enhancing Bus Arrival Time Predictions in Transit Networks through Spatio-temporal Forecasting</h2>
+                <p style="color: var(--text-muted); margin-bottom: 0.5rem; font-style: italic;">
+                    ADScAI Summit & Symposium 2025, University of Moratuwa
+                </p>
+                <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">
+                    <small>Deshitha Gallage, Helith Dulina Gothatuwa, Sharada Galappaththi, Uthayasanker
+                        Thayasivam</small>
+                </p>
+
+                <ul
+                    style="padding-left: 1.2rem; color: var(--text-muted); list-style-type: disc; font-size: 0.95rem; margin-bottom: 1.5rem;">
+                    <li style="margin-bottom: 0.5rem;">Developed a hybrid GNN and Transformer-based model for bus
+                        arrival time prediction, utilizing real-world NYC MTA data to capture spatio-temporal transit
+                        patterns.</li>
+                    <li>Achieved improved performance over CNN and GNN baselines, enabling more accurate real-time
+                        forecasting.</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+
+        // Check local storage or system preference
+        const currentTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        if (currentTheme === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+            themeIcon.textContent = '☀️';
+        } else if (currentTheme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            themeIcon.textContent = '🌙';
+        } else {
+            // Default to system preference
+            if (!systemPrefersDark) {
+                document.documentElement.setAttribute('data-theme', 'light');
+                themeIcon.textContent = '☀️';
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                themeIcon.textContent = '🌙';
+            }
+        }
+
+        // Toggle Event
+        themeToggleBtn.addEventListener('click', () => {
+            let theme = document.documentElement.getAttribute('data-theme');
+
+            if (theme === 'light') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                themeIcon.textContent = '🌙';
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light');
+                themeIcon.textContent = '☀️';
+            }
+        });
+    </script>
+</body>
+
+</html>
